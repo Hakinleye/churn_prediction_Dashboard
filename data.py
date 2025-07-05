@@ -44,12 +44,15 @@ def calc_data():
 
     # Split the data into features and target for model training
     # Use the scaled features and the NEWLY encoded 'contract_renewal'
-   
+    x_full = customer_data[['tenure_scaled', 'monthly_charges_scaled', 'encoded_state', 'encoded_contract_renewal']] # Added 'encoded_contract_renewal'
+    y_full = customer_data['churn']
 
     # Split into training and testing sets
-   
+    x_train, x_test, y_train, y_test = train_test_split(x_full, y_full, test_size=0.2, random_state=42)
+
    
     # Train the logistic regression model
+    model = LogisticRegression(max_iter=1000, random_state=42, class_weight='balanced')
     
 
     ### YOUR CODE HERE ### Step 2.1
