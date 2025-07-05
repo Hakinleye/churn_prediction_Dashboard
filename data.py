@@ -71,34 +71,49 @@ def calc_data():
   
     # Average churn probability (on test set)
     ### YOUR CODE HERE ### Step 3.1.
-   
+    # Predict probabilities for x_test
+    #customer_data['predicted_churn_prob'] = model.predict_proba(x_full)[:, 1]
+    #avg_churn_prob = customer_data['predicted_churn_prob'].mean()
+    test_probs = model.predict_proba(x_test)[:, 1]
+    avg_churn_prob = test_probs.mean()
   
    
     
      # Calculate average churn probability (from test set probabilities)
             ### YOUR CODE HERE ### Step 3.2
     # High-risk customers: predicted to churn (y_pred == 1) AND above avg prob
+    high_risk_customers = customer_data['predicted_churn_binary'].sum() #> avg_churn_prob).sum()
+
    
 
     # Predict churn probability for entire dataset
-    
+    customer_data['predicted_churn_prob'] = model.predict_proba(x_full)[:, 1]
     # Flag high-risk customers using avg churn from test set
+    customer_data['predicted_churn_binary'] = (customer_data['predicted_churn_prob'] > avg_churn_prob).astype(int)
+
+    customer_data['actual_churn'] = y_full # Actual churn for calculating churn rate per state
    
     # Create lists to store churn rates and high-risk counts by state
-   
+    churn_rate_by_state = []
+    high_risk_by_state = []
 
      # Group by 'encoded_state' using the full customer_data DataFrame
-   
+    for encoded_state_val, group in customer_data.groupby('encoded_state'):
+        original_state_name = state_mapping_inverse.get(encoded_state_val, "Unknown State")
+
         # Pass actual churn (for churn rate) and binary predictions (for high-risk count)
-       
-                  # For Step 3.3 (churn_rate)
-           
+        churn_rate, high_risk_count = calculate_churn_and_high_risk(
+            group['actual_churn'],          # For Step 3.3 (churn_rate)
+            group['predicted_churn_binary'] # Now using binary prediction for high-risk count
+        )
         # Append the state and churn rate to the list
-        
+        churn_rate_by_state.append({'state': original_state_name, 'churn_rate': churn_rate})
         # Append the state and high risk count to the list
-        
+        high_risk_by_state.append({'state': original_state_name, 'high_risk': high_risk_count})
 
     # Convert lists to DataFrames
+    churn_rate_by_state_df = pd.DataFrame(churn_rate_by_state)
+    high_risk_by_state_df = pd.DataFrame(high_risk_by_state)
    
 
     print("Results of your analysis for reference:")
