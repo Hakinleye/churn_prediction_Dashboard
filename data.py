@@ -135,8 +135,14 @@ def calc_data():
 def calculate_churn_and_high_risk(actual_churn_series, predicted_binary_series):
     """Calculate churn rate and count high-risk customers for a given state group."""
     ### YOUR CODE HERE ### Step 3.3
-   
+    # "Calculate the mean churn probability for the series"
+    # This refers to the actual churn in the group, not predicted probabilities.
+    churn_rate = actual_churn_series.mean()
+
        ### YOUR CODE HERE ### Step 3.4
+    high_risk_count = predicted_binary_series.sum()
+
+    return churn_rate, high_risk_count
     
     
 
