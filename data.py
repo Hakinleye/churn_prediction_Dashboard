@@ -57,11 +57,12 @@ def calc_data():
 
     ### YOUR CODE HERE ### Step 2.1
     # Fit the model to the training data
-    
+    model.fit(x_train, y_train)
 
     ### YOUR CODE HERE ### Step 2.2
     # Make predictions on the test data
-   
+    y_pred = model.predict(x_test)
+    y_pred_prob = model.predict_proba(x_test)[:, 1]
 
     # Evaluate the model
     print(f"Model Accuracy: {accuracy_score(y_test, y_pred)}")
