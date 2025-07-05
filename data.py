@@ -23,18 +23,22 @@ def calc_data():
     
     ### YOUR CODE HERE ### Step 1.5
     # Encode 'state'
-    
+    customer_data['encoded_state'] = state_encoder.fit_transform(customer_data['state'])
+
 
  # Store the mapping from encoded state to original state names
-    
+    state_mapping_inverse = {label: original_state for label, original_state in enumerate(state_encoder.classes_)} 
+   
     # Code for contract_renewal encoding 
-    
-    
+    contract_renewal_encoder = LabelEncoder()
+    customer_data['encoded_contract_renewal'] = contract_renewal_encoder.fit_transform(customer_data['contract_renewal']) 
  
    
     # Scale numerical columns
-   
+    scaler = StandardScaler()
     ### YOUR CODE HERE ### Step 1.6
+    customer_data[['tenure_scaled', 'monthly_charges_scaled']] = scaler.fit_transform(customer_data[['tenure', 'monthly_charges']])
+    print(customer_data.head())
     
 
     # Split the data into features and target for model training
