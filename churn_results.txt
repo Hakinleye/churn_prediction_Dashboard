@@ -2,7 +2,7 @@ Do not modify this file. It is used for autograding the processed data from the 
 
 Average Churn Probability: 0.4680626463299364
 
-High-Risk Customers: 854
+High-Risk Customers: 513
 
 Churn Rate by State:
    state  churn_rate
@@ -12,6 +12,6 @@ Churn Rate by State:
 
 High-Risk Customers by State:
    state  high_risk
-0    ME        335
-1    NH        281
-2    VT        238
+0    ME        201
+1    NH        163
+2    VT        149
