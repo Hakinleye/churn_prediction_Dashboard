@@ -9,6 +9,7 @@ import pandas as pd
 def calc_data():
     # Load customer data
     ### YOUR CODE HERE ### Step 1.3
+    pd.read_csv('customer_data.csv')
 
     # Display the first few rows of the dataset
     print(customer_data.head())
