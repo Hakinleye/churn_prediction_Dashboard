@@ -39,6 +39,7 @@ def calc_data():
     # Train the logistic regression model
     model = LogisticRegression()
     ### YOUR CODE HERE ### Step 2.1
+    model.fit(x_train, y_train)
 
     # Make predictions
     ### YOUR CODE HERE ### Step 2.2
