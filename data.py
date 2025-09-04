@@ -16,11 +16,11 @@ def calc_data():
 
     # Fill missing values and encode categorical columns
     ### YOUR CODE HERE ### Step 1.4
-    #customer_data['tenure'].fillna(customer_data['tenure'].mean(, inplace=True))
+    customer_data['tenure'].fillna(customer_data['tenure'].mean(, inplace=True))
 
     state_encoder = LabelEncoder()
     ### YOUR CODE HERE ### Step 1.5
-    #customer_data['encoded_state'] = state_encoder.fit_transform(customer_data['state'])
+    customer_data['encoded_state'] = state_encoder.fit_transform(customer_data['state'])
 
     # Scale numerical columns
     scaler = StandardScaler()
