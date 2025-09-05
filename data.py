@@ -20,12 +20,12 @@ def calc_data():
 
     state_encoder = LabelEncoder()
     ### YOUR CODE HERE ### Step 1.5
-    customer_data['encoded_state'] = state_encoder.fit_transform(customer_data['state'])
+    #customer_data['encoded_state'] = state_encoder.fit_transform(customer_data['state'])
 
     # Scale numerical columns
     scaler = StandardScaler()
     ### YOUR CODE HERE ### Step 1.6
-    customer_data[['tenure', 'monthly_charges']] = scaler.fit_transform(customer_data[['tenure', 'monthly_charges']])
+    #customer_data[['tenure', 'monthly_charges']] = scaler.fit_transform(customer_data[['tenure', 'monthly_charges']])
 
     print(customer_data.head())
 
