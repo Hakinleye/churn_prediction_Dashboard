@@ -96,7 +96,8 @@ def calculate_churn_and_high_risk(churn_series, avg_churn_prob):
     high_risk_mask = (churn_series > avg_churn_prob)
 
     ### YOUR CODE HERE ### Step 3.4
-
+    high_risk_count = high_risk_mask.sum()
+    
     return churn_rate, high_risk_count
 
 if __name__ == "__main__":
