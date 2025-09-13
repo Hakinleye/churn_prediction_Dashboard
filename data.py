@@ -43,7 +43,7 @@ def calc_data():
 
     # Make predictions
     ### YOUR CODE HERE ### Step 2.2
-
+    y_pred = model.predict(x_test)
     # Evaluate the model
     print(f"Model Accuracy: {accuracy_score(y_test, y_pred)}")
 
