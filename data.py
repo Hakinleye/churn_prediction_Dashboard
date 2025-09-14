@@ -9,14 +9,14 @@ import pandas as pd
 def calc_data():
     # Load customer data
     ### YOUR CODE HERE ### Step 1.3
-    pd.read_csv('customer_data.csv')
+    customer_data = pd.read_csv('customer_data.csv')
 
     # Display the first few rows of the dataset
     print(customer_data.head())
 
     # Fill missing values and encode categorical columns
     ### YOUR CODE HERE ### Step 1.4
-    customer_data['tenure'].fillna(customer_data['tenure'].mean(, inplace=True))
+    customer_data['tenure'].fillna(customer_data['tenure'].mean(),inplace=True)
 
     state_encoder = LabelEncoder()
     ### YOUR CODE HERE ### Step 1.5
